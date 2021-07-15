@@ -32,7 +32,7 @@ if __name__ == "__main__":
     instructions_ptr = 0
 
     # execute program
-    while instructions_ptr != len(instructions):
+    while instructions_ptr < len(instructions):
         ptr, instructions_ptr = commands[instructions[instructions_ptr]](
             instructions,
             mem,

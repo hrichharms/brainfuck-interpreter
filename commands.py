@@ -67,12 +67,13 @@ def left_bracket(instructions: str, mem: List[int], ptr: int, bracket_stack: Lis
     pointer is simply moved to the next command.
     """
     if mem[ptr] == 0:
+        bracket_stack.append(instructions_ptr)
         for i, instruction in list(enumerate(instructions))[instructions_ptr: ]:
             if instruction == "[":
                 bracket_stack.append(i)
             elif instruction == "]":
-                if r_bracket := bracket_stack.pop() == instructions_ptr:
-                    instructions_ptr = r_bracket + 1
+                if bracket_stack.pop() == instructions_ptr:
+                    instructions_ptr = i + 1
     else:
         bracket_stack.append(instructions_ptr)
         instructions_ptr += 1
