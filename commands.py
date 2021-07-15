@@ -35,7 +35,7 @@ def output_val(instructions: str, mem: List[int], ptr: int, bracket_stack: List[
     """
     Output the value of the current cell.
     """
-    print(bytes([mem[ptr]]).decode(), end="")
+    print(bytes([mem[ptr]]).decode().__repr__()[1:-1], end="")
     return ptr, instructions_ptr + 1
 
 
