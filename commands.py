@@ -35,10 +35,13 @@ def output_val(instructions: str, mem: List[int], ptr: int, bracket_stack: List[
     """
     Output the value of the current cell.
     """
-    if (val := bytes([mem[ptr]]).decode().__repr__()[1:-1]) == "\\n":
-        val = "\n"
-    elif val == "\\t":
-        val = "\t"
+    try:
+        if (val := bytes([mem[ptr]]).decode().__repr__()[1:-1]) == "\\n":
+            val = "\n"
+        elif val == "\\t":
+            val = "\t"
+    except ValueError:
+        val = mem[ptr]
     print(val, end="")
     return ptr, instructions_ptr + 1
 
