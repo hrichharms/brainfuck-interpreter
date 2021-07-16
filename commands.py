@@ -59,7 +59,7 @@ def input_val(instructions: str, mem: List[int], ptr: int, bracket_stack: List[i
     elif val.isdecimal():
         mem[ptr] = int(val)
     else:
-        mem[ptr] = int(val[0])
+        mem[ptr] = val[0].encode()[0]
     return ptr, instructions_ptr + 1
 
 
